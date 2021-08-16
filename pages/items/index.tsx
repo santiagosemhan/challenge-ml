@@ -35,7 +35,7 @@ export const IndexPage: NextPage<Props> = ({
 );
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { req, query } = context;
+  const { query } = context;
   const criteria = parseSearchCriteria(query.search);
   if (!criteria || (criteria && criteria.length === 0)) {
     return {
@@ -45,10 +45,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   }
-
-  const response = await fetch(
-    `http://${req.headers.host}/api/items?q=${criteria}`
-  );
+  const internalApi = process.env.INTERNAL_API || 'http://localhost:3000';
+  const response = await fetch(`${internalApi}/api/items?q=${criteria}`);
   const results = await response.json();
 
   return {

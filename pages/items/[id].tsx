@@ -31,10 +31,10 @@ export const ProductPage: NextPage<Props> = ({
 );
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { params, req } = context;
+  const { params } = context;
   const { id } = params;
-
-  const response = await fetch(`http://${req.headers.host}/api/items/${id}`);
+  const internalApi = process.env.INTERNAL_API || 'http://localhost:3000';
+  const response = await fetch(`${internalApi}/api/items/${id}`);
 
   if (response.status === 404) {
     return {
