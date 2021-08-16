@@ -18,6 +18,7 @@ const ProductDetail: React.FC<Props> = ({ product }: Props) => {
               height="90"
               layout="responsive"
               objectFit="contain"
+              priority
             />
           </div>
         </div>

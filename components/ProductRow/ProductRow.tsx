@@ -34,6 +34,7 @@ const ProductRow: React.FC<Props> = ({ product }: Props) => {
               objectFit="contain"
               quality={99}
               alt={product.title}
+              priority
             />
           </div>
         </a>
