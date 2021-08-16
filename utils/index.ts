@@ -10,7 +10,7 @@ const parseMLProductToItem = (item: MLItem): Item => ({
   id: item.id,
   title: item.title,
   price: {
-    currrency: item.prices.presentation.display_currency,
+    currrency: item.currency_id || item.prices?.presentation?.display_currency,
     amount: parseInt(item.price, 10),
     decimals: parseInt(item.price.toString().split('.')[1]) || 0,
   },
@@ -18,6 +18,7 @@ const parseMLProductToItem = (item: MLItem): Item => ({
   free_shipping: item.shipping.free_shipping,
   condition: item.condition,
   state_name: item.address?.state_name,
+  sold_quantity: item.sold_quantity,
 });
 
 const displayPrice = (price) => {
