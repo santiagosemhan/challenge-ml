@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       colors: {
         'ml-yellow': '#fff159',
+        'ml-blue': '#3483fa',
       },
     },
   },

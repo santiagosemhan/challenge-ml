@@ -7,7 +7,7 @@ type Props = {
   items: any[];
 };
 
-export const Items: NextPage<Props> = ({
+export const IndexPage: NextPage<Props> = ({
   search,
   items,
 }: Props): JSX.Element => (
@@ -52,4 +52,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-export default Items;
+export default IndexPage;
