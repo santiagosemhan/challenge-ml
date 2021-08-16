@@ -5,8 +5,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'ml-yellow': '#fff159',
+        black: '#333333',
+        'ml-yellow': '#ffe600',
         'ml-blue': '#3483fa',
+        'ml-gray': '#999999',
+        'ml-light-gray': '#eeeeee',
       },
     },
   },

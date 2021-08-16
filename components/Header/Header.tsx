@@ -9,10 +9,10 @@ const Header: React.FC = () => {
   const { query } = useRouter();
   return (
     <header className="w-full bg-ml-yellow">
-      <div className="container mx-auto px-24 py-3 flex items-center space-x-12">
-        <div className="w-36 flex items-center cursor-pointer">
+      <div className="container mx-auto w-10/12 py-3 flex items-center space-x-12">
+        <div className="w-16 cursor-pointer">
           <Link href="/">
-            <a>
+            <a className="flex items-center">
               <Image src={logo} layout="intrinsic" alt="Mercado Libre" />
             </a>
           </Link>

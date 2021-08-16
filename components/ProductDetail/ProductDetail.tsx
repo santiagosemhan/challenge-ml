@@ -7,32 +7,34 @@ type Props = {
 
 const ProductDetail: React.FC<Props> = ({ product }: Props) => {
   return (
-    <div className="bg-white py-8">
+    <div>
       <div className="flex w-full">
-        <div className="w-4/6 px-20">
-          <Image
-            src={product.picture}
-            alt={product.title}
-            width="90"
-            height="90"
-            layout="responsive"
-            objectFit="contain"
-          />
+        <div className="w-8/12">
+          <div className="mx-auto w-[680px]">
+            <Image
+              src={product.picture}
+              alt={product.title}
+              width="90"
+              height="90"
+              layout="responsive"
+              objectFit="contain"
+            />
+          </div>
         </div>
-        <div className="w-2/6 flex flex-col pr-8 pl-16 py-4">
-          <span className="text-xs text-gray-500">
+        <div className="w-3/12 flex flex-col">
+          <span className="text-sm text-ml-gray mt-8">
             {product.condition === 'new' ? 'Nuevo' : 'Usado'} -{' '}
             {product.sold_quantity} vendidos
           </span>
-          <h1 className="font-semibold text-lg text-gray-900 mt-2 leading-6">
+          <h1 className="font-semibold text-2xl text-black mt-4 leading-6">
             {product.title}
           </h1>
-          <div className="flex my-5 text-4xl font-light">
+          <div className="flex my-8 text-5xl font-light text-black">
             <span>{displayCurrency(product.price.currency)}</span>
             <span>{product.price.amount}</span>
             <span className="text-xl ml-1">{pad(product.price.decimals)}</span>
           </div>
-          <div className="mt-4">
+          <div className="mr-8">
             <button className="bg-ml-blue text-white rounded px-6 py-2 text-sm font-light w-full">
               Comprar
             </button>
@@ -40,10 +42,10 @@ const ProductDetail: React.FC<Props> = ({ product }: Props) => {
         </div>
       </div>
       <div className="px-8 mt-24">
-        <h2 className="text-2xl my-6 font-light text-gray-800">
+        <h2 className="text-2xl font-light text-gray-800">
           Descripción del producto
         </h2>
-        <p className="text-sm text-gray-500 font-light leading-5 w-4/6">
+        <p className="text-base text-ml-gray font-light leading-5 w-4/6 py-8">
           {product.description}
         </p>
       </div>

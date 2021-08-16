@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { GetServerSideProps, NextPage } from 'next';
 import ProductRow from '@/components/ProductRow/ProductRow';
 import { parseSearchCriteria } from '../../utils/';
+import Breadcrum from '@/components/Breadcrum/Breadcrum';
 
 type Props = {
   search: string;
@@ -12,16 +13,20 @@ export const IndexPage: NextPage<Props> = ({
   search,
   items,
 }: Props): JSX.Element => (
-  <div className="container mx-auto px-24 py-8">
+  <div className="container mx-auto w-10/12">
     <Head>
       <title>{`${search} | ` || ''}Mercado Libre Argentina</title>
+      <meta name="robots" content="noindex, nofollow" />
     </Head>
-    <div className="bg-white p-4">
+    <Breadcrum />
+    <div className="bg-white">
       {search &&
         (items.length > 0 ? (
-          items.map((product) => (
-            <ProductRow key={product.id} product={product} />
-          ))
+          <div className="px-4 divide-y divide-ml-light-gray">
+            {items.map((product) => (
+              <ProductRow key={product.id} product={product} />
+            ))}
+          </div>
         ) : (
           <div className="flex justify-center py-12">{`No se han encontrado resultados para su búsqueda "${search}"`}</div>
         ))}

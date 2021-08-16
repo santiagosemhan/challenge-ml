@@ -33,7 +33,7 @@ const SearchBox: React.FC<Props> = ({ query }: Props) => {
         onSubmit={handleSubmit}
       >
         <input
-          className="w-full px-4 py-2"
+          className="w-full px-4 py-2 text-lg placeholder-ml-gray text-black"
           type="text"
           value={criteria}
           onChange={(e) => setCriteria(e.currentTarget.value)}

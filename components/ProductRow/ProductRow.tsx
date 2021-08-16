@@ -22,10 +22,10 @@ type Props = {
 
 const ProductRow: React.FC<Props> = ({ product }: Props) => {
   return (
-    <div className="flex">
-      <div className="w-48 cursor-pointer">
-        <Link href={`/items/${product.id}`} passHref>
-          <a>
+    <div className="flex py-4">
+      <Link href={`/items/${product.id}`} passHref>
+        <a>
+          <div className="px-4 w-[180px] rounded-[4px] overflow-hidden cursor-pointer">
             <Image
               src={product.picture}
               width={170}
@@ -35,10 +35,10 @@ const ProductRow: React.FC<Props> = ({ product }: Props) => {
               quality={99}
               alt={product.title}
             />
-          </a>
-        </Link>
-      </div>
-      <div className="flex flex-col flex-grow space-y-2 py-4">
+          </div>
+        </a>
+      </Link>
+      <div className="flex flex-col flex-grow py-4">
         <div className="flex items-center space-x-2">
           <Link href={`/items/${product.id}`} passHref>
             <span className="text-2xl font-light cursor-pointer">
@@ -51,7 +51,7 @@ const ProductRow: React.FC<Props> = ({ product }: Props) => {
             </span>
           )}
         </div>
-        <span className="text-lg text-gray-900 w-5/6 font-light">
+        <span className="mt-8 text-lg text-gray-900 w-5/6 font-light">
           {product.title}
         </span>
       </div>
