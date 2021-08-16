@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { GetServerSideProps, NextPage } from 'next';
 import ProductRow from '@/components/ProductRow/ProductRow';
+import { parseSearchCriteria } from '../../utils/';
 
 type Props = {
   search: string;
@@ -30,24 +31,25 @@ export const IndexPage: NextPage<Props> = ({
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, query } = context;
-
-  if (!query.search) {
+  const criteria = parseSearchCriteria(query.search);
+  if (!criteria || (criteria && criteria.length === 0)) {
     return {
-      props: {
-        items: [],
+      redirect: {
+        destination: '/',
+        permanent: false,
       },
     };
   }
 
   const response = await fetch(
-    `http://${req.headers.host}/api/items?q=${query.search}`
+    `http://${req.headers.host}/api/items?q=${criteria}`
   );
   const results = await response.json();
 
   return {
     props: {
-      search: query.search || null,
-      items: results.items,
+      search: criteria || null,
+      items: results.items || [],
     },
   };
 };

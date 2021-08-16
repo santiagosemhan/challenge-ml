@@ -55,4 +55,18 @@ const displayPrice = (price) => {
   return number;
 };
 
-export { pad, parseMLProductToItem, displayPrice, displayCurrency };
+const parseSearchCriteria = (criteria): string | undefined => {
+  if (!criteria) return undefined;
+  if (Array.isArray(criteria)) {
+    return criteria[0].trim();
+  }
+  return criteria.trim();
+};
+
+export {
+  parseSearchCriteria,
+  pad,
+  parseMLProductToItem,
+  displayPrice,
+  displayCurrency,
+};
