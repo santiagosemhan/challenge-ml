@@ -19,11 +19,11 @@ const SearchBox: React.FC<Props> = ({ query }: Props) => {
   );
 
   return (
-    <div className="flex flex-grow w-96">
+    <div className="flex flex-grow w-full">
       <form
         method="GET"
         role="search"
-        className="bg-white flex w-4/6 shadow"
+        className="bg-white flex w-full shadow"
         onSubmit={handleSubmit}
       >
         <input
@@ -31,7 +31,7 @@ const SearchBox: React.FC<Props> = ({ query }: Props) => {
           type="text"
           value={criteria}
           onChange={(e) => setCriteria(e.currentTarget.value)}
-          placeholder="Buscar productos marcas y más..."
+          placeholder="Nunca dejes de buscar"
         />
         <button
           type="submit"
