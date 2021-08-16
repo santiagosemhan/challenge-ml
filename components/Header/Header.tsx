@@ -13,7 +13,12 @@ const Header: React.FC = () => {
         <div className="w-16 cursor-pointer">
           <Link href="/">
             <a className="flex items-center">
-              <Image src={logo} layout="intrinsic" alt="Mercado Libre" />
+              <Image
+                src={logo}
+                layout="intrinsic"
+                alt="Mercado Libre"
+                priority
+              />
             </a>
           </Link>
         </div>
