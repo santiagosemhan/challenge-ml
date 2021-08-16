@@ -22,8 +22,11 @@ const parseMLProductToItem = (item: MLItem): Item => ({
 });
 
 const pad = (decimals) => {
-  if (decimals < 10) {
+  const numberLength = decimals.toString().length;
+  if (numberLength > 1 && decimals < 10) {
     return `0${decimals}`;
+  } else {
+    return `${decimals}0`;
   }
   return decimals;
 };
