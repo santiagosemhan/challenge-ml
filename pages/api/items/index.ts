@@ -1,8 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import got from 'got';
-import { parseMLProductToItem } from '../../utils/index';
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+import { parseMLProductToItem } from '../../../utils/index';
+
+const handler = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   const { ML_API } = process.env;
   const { q } = req.query;
   if (!q) {
@@ -11,9 +15,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  const response: any = await got(`${ML_API}/sites/MLA/search`, {
-    searchParams: { q: q as string },
-  }).json();
+  const response: { results: Record<string, unknown>[] } = await got(
+    `${ML_API}/sites/MLA/search`,
+    {
+      searchParams: { q: q as string },
+    }
+  ).json();
 
   const results = {
     author: {
@@ -21,9 +28,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       lastname: 'Semhan',
     },
     categories: [],
-    items: response.results.map((product: any) =>
-      parseMLProductToItem(product)
-    ),
+    items: response.results.map((product) => parseMLProductToItem(product)),
   };
   return res.status(200).json(results);
 };
