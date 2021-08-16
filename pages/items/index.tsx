@@ -2,15 +2,17 @@ import Head from 'next/head';
 import { GetServerSideProps, NextPage } from 'next';
 import ProductRow from '@/components/ProductRow/ProductRow';
 import { parseSearchCriteria } from '../../utils/';
-import Breadcrum from '@/components/Breadcrum/Breadcrum';
+import Breadcrums from '@/components/Breadcrums/Breadcrums';
 
 type Props = {
   search: string;
+  categories: string[];
   items: any[];
 };
 
 export const IndexPage: NextPage<Props> = ({
   search,
+  categories,
   items,
 }: Props): JSX.Element => (
   <div className="container mx-auto w-10/12">
@@ -18,7 +20,7 @@ export const IndexPage: NextPage<Props> = ({
       <title>{`${search} | ` || ''}Mercado Libre Argentina</title>
       <meta name="robots" content="noindex, nofollow" />
     </Head>
-    <Breadcrum />
+    <Breadcrums categories={categories} />
     <div className="bg-white">
       {search &&
         (items.length > 0 ? (
@@ -52,6 +54,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       search: criteria || null,
+      categories: results.categories || [],
       items: results.items || [],
     },
   };

@@ -2,13 +2,15 @@ import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import ProductDetail from '@/components/ProductDetail/ProductDetail';
 import { displayCurrency } from '../../utils/';
-import Breadcrum from '@/components/Breadcrum/Breadcrum';
+import Breadcrums from '@/components/Breadcrums/Breadcrums';
 
 type Props = {
+  categories: string[];
   product: any;
 };
 
 export const ProductPage: NextPage<Props> = ({
+  categories,
   product,
 }: Props): JSX.Element => (
   <div className="container mx-auto w-10/12">
@@ -20,10 +22,12 @@ export const ProductPage: NextPage<Props> = ({
           product.price.currency
         )} ${
           product.price.amount
-        } - Pagá en cuotas - Envío gratis a todo el país. Encontrá más productos de Hogar, Muebles y Jardín, Textiles de Hogar y Decoración, Mantelería y Platos de Sitio, Individuales.`}
+        } - Pagá en cuotas - Envío gratis a todo el país. Encontrá más ${categories.join(
+          ', '
+        )}.`}
       />
     </Head>
-    <Breadcrum />
+    <Breadcrums categories={categories} />
     <div className="bg-white  mb-8">
       <ProductDetail product={product} />
     </div>
@@ -46,7 +50,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      product,
+      categories: product.categories,
+      product: product.item,
     },
   };
 };
