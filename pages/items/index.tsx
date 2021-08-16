@@ -15,15 +15,16 @@ export const IndexPage: NextPage<Props> = ({
     <Head>
       <title>Mercado Libre Argentina</title>
     </Head>
-    {items.length > 0 ? (
-      <div className="bg-white p-4">
-        {items.map((product) => (
-          <ProductRow key={product.id} product={product} />
-        ))}
-      </div>
-    ) : (
-      <div className="flex justify-center py-12">{`No se han encontrado resultados para su búsqueda "${search}"`}</div>
-    )}
+    {search &&
+      (items.length > 0 ? (
+        <div className="bg-white p-4">
+          {items.map((product) => (
+            <ProductRow key={product.id} product={product} />
+          ))}
+        </div>
+      ) : (
+        <div className="flex justify-center py-12">{`No se han encontrado resultados para su búsqueda "${search}"`}</div>
+      ))}
   </div>
 );
 
@@ -32,9 +33,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   if (!query.search) {
     return {
-      redirect: {
-        destination: '/',
-        permanent: false,
+      props: {
+        items: [],
       },
     };
   }

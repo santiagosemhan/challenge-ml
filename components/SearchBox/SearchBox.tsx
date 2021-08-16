@@ -18,6 +18,12 @@ const SearchBox: React.FC<Props> = ({ query }: Props) => {
     [router, criteria]
   );
 
+  React.useEffect(() => {
+    if (!query) {
+      setCriteria('');
+    }
+  }, [query]);
+
   return (
     <div className="flex flex-grow w-full">
       <form
