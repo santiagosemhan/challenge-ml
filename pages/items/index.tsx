@@ -18,6 +18,10 @@ export const IndexPage: NextPage<Props> = ({
   <div className="container mx-auto w-10/12">
     <Head>
       <title>{`${search} | ` || ''}Mercado Libre Argentina</title>
+      <meta
+        name="description"
+        content="Encontrá todo lo que estás buscando y más en Mercado Libre Argentina"
+      />
       <meta name="robots" content="noindex, nofollow" />
     </Head>
     <Breadcrums categories={categories} />
