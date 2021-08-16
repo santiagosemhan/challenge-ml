@@ -21,7 +21,7 @@ const ProductDetail: React.FC<Props> = ({ product }: Props) => {
             />
           </div>
         </div>
-        <div className="w-3/12 flex flex-col">
+        <div className="ml-4 w-3/12 flex flex-col">
           <span className="text-sm text-ml-gray mt-8">
             {product.condition === 'new' ? 'Nuevo' : 'Usado'} -{' '}
             {product.sold_quantity} vendidos

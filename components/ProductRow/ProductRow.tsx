@@ -56,7 +56,7 @@ const ProductRow: React.FC<Props> = ({ product }: Props) => {
         </span>
       </div>
       <div className="w-36">
-        <span className="text-sm text-gray-500">{product.state_name}</span>
+        <span className="text-xs text-ml-gray">{product.state_name}</span>
       </div>
     </div>
   );

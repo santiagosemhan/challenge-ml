@@ -8,6 +8,7 @@ module.exports = {
         black: '#333333',
         'ml-yellow': '#ffe600',
         'ml-blue': '#3483fa',
+        'ml-strong-gray': '#666666',
         'ml-gray': '#999999',
         'ml-light-gray': '#eeeeee',
       },
