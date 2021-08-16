@@ -24,13 +24,20 @@ const handler = async (
       ]
     );
 
+    const categories: { path_from_root: Record<string, unknown>[] } = await got(
+      `${ML_API}/categories/${product.category_id}`
+    ).json();
+
     const results = {
       author: {
         name: 'Santiago',
         lastname: 'Semhan',
       },
-      ...parseMLProductToItem(product),
-      description: description.plain_text,
+      categories: categories.path_from_root.map((c) => c.name),
+      item: {
+        ...parseMLProductToItem(product),
+        description: description.plain_text,
+      },
     };
     return res.status(200).json(results);
   } catch (error) {
