@@ -42,9 +42,9 @@ const SearchBox: React.FC<Props> = ({ query }: Props) => {
         <button
           type="submit"
           tabIndex={0}
-          className="flex items-center w-7 pr-2"
+          className="flex items-center w-10 px-2 bg-gray-100"
         >
-          <Image src={searchIcon} priority alt="Buscar" />
+          <Image src={searchIcon} priority alt="Buscar" layout="intrinsic" />
         </button>
       </form>
     </div>
