@@ -28,6 +28,6 @@ jobs:
               - 'src/**/*.{ts,tsx,json}'
           list-files: 'shell'
       - name: Run linter
-        run: yarn lint -- ${{ steps.filter.outputs.src_files }}
+        run: yarn ci:lint -- ${{ steps.filter.outputs.src_files }}
       - name: Run Build
         run: yarn build
