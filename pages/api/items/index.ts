@@ -18,7 +18,7 @@ const handler = async (
   const response: { results: Record<string, unknown>[] } = await got(
     `${ML_API}/sites/MLA/search`,
     {
-      searchParams: { q: q as string },
+      searchParams: { q: q as string, limit: 4 },
     }
   ).json();
 
