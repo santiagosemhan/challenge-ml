@@ -44,7 +44,7 @@ const SearchBox: React.FC<Props> = ({ query }: Props) => {
           tabIndex={0}
           className="flex items-center w-7 pr-2"
         >
-          <Image src={searchIcon} />
+          <Image src={searchIcon} priority alt="Buscar" />
         </button>
       </form>
     </div>

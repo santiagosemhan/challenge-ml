@@ -5,7 +5,7 @@ import logo from '../../public/static/img/logo.png';
 import SearchBox from '../SearchBox/SearchBox';
 import { useRouter } from 'next/dist/client/router';
 
-const Header = () => {
+const Header: React.FC = () => {
   const { query } = useRouter();
   return (
     <header className="w-full bg-ml-yellow">
@@ -13,7 +13,7 @@ const Header = () => {
         <div className="w-36 flex items-center cursor-pointer">
           <Link href="/">
             <a>
-              <Image src={logo} layout="intrinsic" />
+              <Image src={logo} layout="intrinsic" alt="Mercado Libre" />
             </a>
           </Link>
         </div>

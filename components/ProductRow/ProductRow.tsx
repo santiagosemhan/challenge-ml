@@ -24,7 +24,7 @@ const ProductRow: React.FC<Props> = ({ product }: Props) => {
   return (
     <div className="flex">
       <div className="w-48 cursor-pointer">
-        <Link href={`/items/${product.id}`}>
+        <Link href={`/items/${product.id}`} passHref>
           <a>
             <Image
               src={product.picture}
@@ -40,7 +40,7 @@ const ProductRow: React.FC<Props> = ({ product }: Props) => {
       </div>
       <div className="flex flex-col flex-grow space-y-2 py-4">
         <div className="flex items-center space-x-2">
-          <Link href={`/items/${product.id}`}>
+          <Link href={`/items/${product.id}`} passHref>
             <span className="text-2xl font-light cursor-pointer">
               $ {displayPrice(product.price)}
             </span>
