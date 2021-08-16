@@ -21,17 +21,17 @@ const parseMLProductToItem = (item: MLItem): Item => ({
   sold_quantity: item.sold_quantity,
 });
 
-const pad = (decimals) => {
+const pad = (decimals: number): string => {
   const numberLength = decimals.toString().length;
-  if (numberLength > 1 && decimals < 10) {
+  if (numberLength > 0 && decimals < 10) {
     return `0${decimals}`;
-  } else {
-    return `${decimals}0`;
+  } else if (decimals > 10) {
+    return decimals.toString();
   }
-  return decimals;
+  return '00';
 };
 
-const displayCurrency = (currency) => {
+const displayCurrency = (currency: string): string => {
   switch (currency) {
     case 'ARS':
       return '$';
@@ -48,14 +48,16 @@ const displayCurrency = (currency) => {
   }
 };
 
-const displayPrice = (price) => {
+const displayPrice = (price: { amount: number; decimals: number }): number => {
   const number =
     price.amount +
     price.decimals / Math.pow(10, price.decimals.toString().length);
   return number;
 };
 
-const parseSearchCriteria = (criteria): string | undefined => {
+const parseSearchCriteria = (
+  criteria: string | string[]
+): string | undefined => {
   if (!criteria) return undefined;
   if (Array.isArray(criteria)) {
     return criteria[0].trim();
