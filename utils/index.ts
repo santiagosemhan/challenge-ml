@@ -21,6 +21,30 @@ const parseMLProductToItem = (item: MLItem): Item => ({
   sold_quantity: item.sold_quantity,
 });
 
+const pad = (decimals) => {
+  if (decimals < 10) {
+    return `0${decimals}`;
+  }
+  return decimals;
+};
+
+const displayCurrency = (currency) => {
+  switch (currency) {
+    case 'ARS':
+      return '$';
+    case 'USD':
+      return '$';
+    case 'BRL':
+      return 'R$';
+    case 'EUR':
+      return '€';
+    case 'GBP':
+      return '£';
+    default:
+      return '$';
+  }
+};
+
 const displayPrice = (price) => {
   const number =
     price.amount +
@@ -28,4 +52,4 @@ const displayPrice = (price) => {
   return number;
 };
 
-export { parseMLProductToItem, displayPrice };
+export { pad, parseMLProductToItem, displayPrice, displayCurrency };
