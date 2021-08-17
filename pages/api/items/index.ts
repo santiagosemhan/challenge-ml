@@ -22,18 +22,22 @@ const handler = async (
     searchParams: { q: q as string, limit: 4 },
   }).json();
 
-  const categories = response.filters.find(
-    (filter) => filter.id === 'category'
-  );
+  let categories = [];
+  if (response.results.length > 0) {
+    const responseCategories: { path_from_root: Record<string, unknown>[] } =
+      await got(
+        `${ML_API}/categories/${response.results[0].category_id}`
+      ).json();
+
+    categories = responseCategories.path_from_root.map((c) => c.name);
+  }
 
   const results = {
     author: {
       name: 'Santiago',
       lastname: 'Semhan',
     },
-    categories: categories?.values[0]?.path_from_root.map(
-      (category) => category.name
-    ),
+    categories,
     items: response.results.map((product) => parseMLProductToItem(product)),
   };
   return res.status(200).json(results);
