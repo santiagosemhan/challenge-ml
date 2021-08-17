@@ -41,3 +41,4 @@ yarn dev
 - Responsive views for mobile/tablets devices.
 - Add unit testing
 - Add integration tests using tools like cypress.io
+- Improve typescript support. (Currently, there are many types with any or using generics). So, it would be nice to have 100% code typing support both for backend and frontend types.
