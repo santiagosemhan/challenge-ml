@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   const { query } = useRouter();
   return (
     <header className="w-full bg-ml-yellow">
-      <div className="container mx-auto w-10/12 py-3 flex items-center space-x-12">
+      <div className="container mx-auto w-10/12 py-2.5 flex items-center space-x-12">
         <div className="w-16 cursor-pointer">
           <Link href="/">
             <a className="flex items-center">
