@@ -1,7 +1,7 @@
 # Mercado libre Challenge
 
 This project is a challenge test to Mercado Libre company.  
-Feel free to send a PR o comment any issue you found.
+Feel free to send a PR or comment any issue you found.
 
 The project it's currently using the following technologies:
 
@@ -37,6 +37,7 @@ yarn dev
 
 ## TODOS
 
+- Refactor backend network calls to services approach.
+- Responsive views for mobile/tablets devices.
 - Add unit testing
 - Add integration tests using tools like cypress.io
-- Responsive views for mobile/tablets devices.
